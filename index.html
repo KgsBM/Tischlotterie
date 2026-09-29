@@ -9,6 +9,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Lilita+One&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; }
+
+  /* Alles skaliert mit der Bildschirmgröße: 1rem wächst/schrumpft mit dem Monitor */
+  html { font-size: clamp(11px, min(0.95vw, 1.75vh), 30px); }
   html, body { height: 100%; margin: 0; }
 
   body {
@@ -17,11 +20,12 @@
     display: flex;
     flex-direction: column;
     height: 100vh;
+    height: 100dvh;
     overflow: hidden;
     background:
-      radial-gradient(circle at 12% 18%, rgba(255,255,255,.18) 0 60px, transparent 61px),
-      radial-gradient(circle at 88% 12%, rgba(255,255,255,.14) 0 90px, transparent 91px),
-      radial-gradient(circle at 75% 92%, rgba(255,255,255,.12) 0 70px, transparent 71px),
+      radial-gradient(circle at 12% 18%, rgba(255,255,255,.18) 0 4rem, transparent 4.05rem),
+      radial-gradient(circle at 88% 12%, rgba(255,255,255,.14) 0 6rem, transparent 6.05rem),
+      radial-gradient(circle at 75% 92%, rgba(255,255,255,.12) 0 5rem, transparent 5.05rem),
       linear-gradient(135deg, #6a5cff 0%, #b44cff 45%, #ff6fb5 100%);
   }
 
@@ -31,20 +35,20 @@
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
-    gap: 12px 20px;
-    padding: 14px 20px 12px;
+    gap: .6rem 1.2rem;
+    padding: .8rem 1.2rem .7rem;
   }
   h1 {
     margin: 0;
     font-family: 'Lilita One', 'Fredoka', sans-serif;
     font-weight: 400;
-    font-size: clamp(28px, 4vw, 46px);
+    font-size: 2.6rem;
     color: #fff;
-    letter-spacing: 1px;
-    text-shadow: 0 4px 0 #3b1d8f, 0 8px 18px rgba(0,0,0,.25);
+    letter-spacing: .05em;
+    text-shadow: 0 .22rem 0 #3b1d8f, 0 .5rem 1rem rgba(0,0,0,.25);
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: .6rem;
   }
   h1 .dice { display: inline-block; animation: spinDice 6s ease-in-out infinite; }
   @keyframes spinDice {
@@ -53,39 +57,39 @@
     100% { transform: rotate(360deg); }
   }
 
-  .controls { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+  .controls { display: flex; flex-wrap: wrap; align-items: center; gap: .6rem; }
 
   .btn {
     font-family: inherit;
     font-weight: 600;
-    font-size: 16px;
+    font-size: 1rem;
     border: none;
     border-radius: 999px;
-    padding: 10px 18px;
+    padding: .6rem 1.1rem;
     cursor: pointer;
     background: #fff;
     color: #4b2a9b;
-    box-shadow: 0 5px 0 rgba(40, 10, 100, .35);
+    box-shadow: 0 .3rem 0 rgba(40, 10, 100, .35);
     transition: transform .12s ease, box-shadow .12s ease, filter .2s;
   }
-  .btn:hover:not(:disabled) { filter: brightness(1.06); transform: translateY(-2px); box-shadow: 0 7px 0 rgba(40,10,100,.35); }
-  .btn:active:not(:disabled) { transform: translateY(4px); box-shadow: 0 1px 0 rgba(40,10,100,.35); }
+  .btn:hover:not(:disabled) { filter: brightness(1.06); transform: translateY(-.12rem); box-shadow: 0 .42rem 0 rgba(40,10,100,.35); }
+  .btn:active:not(:disabled) { transform: translateY(.25rem); box-shadow: 0 .05rem 0 rgba(40,10,100,.35); }
   .btn:disabled { opacity: .5; cursor: not-allowed; }
 
   .btn-go {
     font-family: 'Lilita One', 'Fredoka', sans-serif;
     font-weight: 400;
-    font-size: clamp(20px, 2.6vw, 30px);
-    letter-spacing: .5px;
-    padding: 14px 32px;
+    font-size: 1.75rem;
+    letter-spacing: .03em;
+    padding: .8rem 1.9rem;
     color: #fff;
-    text-shadow: 0 2px 0 rgba(0,0,0,.25);
+    text-shadow: 0 .12rem 0 rgba(0,0,0,.25);
     background: linear-gradient(135deg, #ffd43b 0%, #ff922b 50%, #ff5c7a 100%);
-    box-shadow: 0 7px 0 #b3361f, 0 14px 26px rgba(0,0,0,.25);
+    box-shadow: 0 .4rem 0 #b3361f, 0 .8rem 1.5rem rgba(0,0,0,.25);
     animation: wiggle 3s ease-in-out infinite;
   }
-  .btn-go:hover:not(:disabled) { box-shadow: 0 9px 0 #b3361f, 0 16px 28px rgba(0,0,0,.28); }
-  .btn-go:active:not(:disabled) { box-shadow: 0 2px 0 #b3361f, 0 6px 12px rgba(0,0,0,.2); }
+  .btn-go:hover:not(:disabled) { box-shadow: 0 .52rem 0 #b3361f, 0 .9rem 1.6rem rgba(0,0,0,.28); }
+  .btn-go:active:not(:disabled) { box-shadow: 0 .1rem 0 #b3361f, 0 .3rem .7rem rgba(0,0,0,.2); }
   .btn-go:disabled { animation: none; }
   @keyframes wiggle {
     0%, 70%, 100% { rotate: 0deg; }
@@ -99,107 +103,83 @@
     background: rgba(255,255,255,.22);
     color: #fff;
     font-weight: 600;
-    padding: 8px 14px;
+    padding: .5rem .85rem;
     border-radius: 999px;
-    border: 2px solid rgba(255,255,255,.4);
+    border: .12rem solid rgba(255,255,255,.4);
     white-space: nowrap;
   }
 
-  /* Schalter "gleichmäßig verteilen" */
-  .switch {
-    display: inline-flex; align-items: center; gap: 8px;
-    color: #fff; font-weight: 600; cursor: pointer; user-select: none;
-    background: rgba(255,255,255,.22);
-    border: 2px solid rgba(255,255,255,.4);
-    padding: 6px 12px 6px 8px; border-radius: 999px;
-  }
-  .switch input { position: absolute; opacity: 0; pointer-events: none; }
-  .switch .track {
-    width: 42px; height: 24px; border-radius: 999px; background: rgba(0,0,0,.25);
-    position: relative; transition: background .2s;
-  }
-  .switch .track::after {
-    content: ''; position: absolute; top: 3px; left: 3px; width: 18px; height: 18px;
-    border-radius: 50%; background: #fff; transition: transform .2s cubic-bezier(.3,1.6,.5,1);
-  }
-  .switch input:checked + .track { background: #38d9a9; }
-  .switch input:checked + .track::after { transform: translateX(18px); }
-  .switch input:focus-visible + .track { outline: 3px solid #ffd43b; outline-offset: 2px; }
-
   /* ---------- Klassenzimmer / Tische ---------- */
-  main { flex: 1; min-height: 0; display: flex; padding: 0 20px 12px; }
+  main { flex: 1; min-height: 0; display: flex; padding: 0 1.2rem .7rem; }
   .board {
     flex: 1;
-    overflow: auto;
-    padding: 18px;
-    border-radius: 28px;
-    border: 6px solid #fff;
+    min-width: 0;
+    overflow: hidden;
+    padding: 1rem;
+    border-radius: 1.6rem;
+    border: .35rem solid #fff;
     background-color: #fffaf0;
-    background-image: radial-gradient(#f1dfbd 1.6px, transparent 1.6px);
-    background-size: 22px 22px;
-    box-shadow: 0 10px 0 rgba(59, 29, 143, .35), 0 22px 40px rgba(40, 0, 90, .25);
+    background-image: radial-gradient(#f1dfbd .1rem, transparent .1rem);
+    background-size: 1.3rem 1.3rem;
+    box-shadow: 0 .6rem 0 rgba(59, 29, 143, .35), 0 1.3rem 2.4rem rgba(40, 0, 90, .25);
+    display: flex;
   }
   .tables {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    gap: 16px;
+    flex: 1;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    gap: var(--gap, .9rem);
   }
   .table {
+    container-type: size;
+    width: var(--tw, 10rem);
+    height: var(--th, 8rem);
     position: relative;
+    display: flex;
+    flex-direction: column;
     background: #fff;
-    border-radius: 22px;
-    padding: 8px 8px 10px;
-    border: 3px solid var(--c-soft);
-    box-shadow: 0 5px 0 rgba(0,0,0,.07);
-    transition: border-color .3s, box-shadow .3s, opacity .3s;
+    border-radius: 1.3rem;
+    padding: 0;
+    border: .2rem solid var(--c-soft);
+    box-shadow: 0 .3rem 0 rgba(0,0,0,.07);
+    transition: border-color .3s, box-shadow .3s;
   }
-  .table.has-guests { border-color: var(--c); box-shadow: 0 5px 0 var(--c-dark); }
+  .table.has-guests { border-color: var(--c); box-shadow: 0 .3rem 0 var(--c-dark); }
   .table.bump { animation: bump .45s cubic-bezier(.3,1.6,.5,1); }
   @keyframes bump {
     0% { transform: scale(1); }
     40% { transform: scale(1.07) rotate(-1deg); }
     100% { transform: scale(1); }
   }
-  .desk { position: relative; height: 64px; }
+  .desk { position: relative; height: 50cqh; flex: none; margin: 5cqh 5cqw 0; }
   .desk svg { width: 100%; height: 100%; display: block; }
   .num {
     position: absolute;
     left: 50%; top: 42%;
     transform: translate(-50%, -50%);
-    width: 38px; height: 38px;
+    width: min(24cqh, 22cqw); height: min(24cqh, 22cqw);
     border-radius: 50%;
     display: grid; place-items: center;
     background: #fff;
     color: var(--c-dark);
     font-family: 'Lilita One', 'Fredoka', sans-serif;
-    font-size: 21px;
-    box-shadow: 0 3px 0 rgba(0,0,0,.18);
+    font-size: min(14cqh, 13cqw);
+    box-shadow: 0 .15rem 0 rgba(0,0,0,.18);
   }
-  .count {
-    position: absolute;
-    top: -10px; right: -10px;
-    min-width: 28px; height: 28px; padding: 0 7px;
-    border-radius: 999px;
-    display: grid; place-items: center;
-    background: var(--c-dark); color: #fff;
-    font-weight: 700; font-size: 14px;
-    border: 3px solid #fff;
-    transform: scale(0);
-    transition: transform .3s cubic-bezier(.3,1.8,.5,1);
-  }
-  .table.has-guests .count { transform: scale(1); }
   .seats {
+    flex: 1;
+    min-height: 0;
     display: flex;
-    flex-wrap: wrap;
+    align-items: center;
     justify-content: center;
-    align-content: flex-start;
-    gap: 6px;
-    min-height: 40px;
-    margin-top: 6px;
-    padding: 6px 4px;
-    border-radius: 14px;
+    margin: 3cqh 5cqw 6cqh;
+    padding: 0 3cqw;
+    border-radius: .8rem;
     background: var(--c-soft);
   }
+  .seats .chip { font-size: min(12cqh, 9cqw); }
 
   /* ---------- Namenskärtchen ---------- */
   .chip {
@@ -207,34 +187,25 @@
     position: relative;
     display: inline-flex;
     align-items: center;
-    gap: 5px;
+    gap: .3em;
     max-width: 100%;
-    padding: 5px 12px 5px 8px;
+    padding: .3em .75em .3em .5em;
     background: var(--chip-bg, #ffd43b);
     color: #24123f;
     font-weight: 600;
-    font-size: 15px;
+    font-size: 1.05rem;
     line-height: 1.2;
     white-space: nowrap;
-    border: 3px solid rgba(255,255,255,.9);
+    border: .18em solid rgba(255,255,255,.9);
     border-radius: 999px;
-    box-shadow: 0 3px 0 rgba(0,0,0,.2);
+    box-shadow: 0 .18em 0 rgba(0,0,0,.2);
     transform: rotate(var(--tilt));
     user-select: none;
   }
-  .chip .emo { font-size: 17px; line-height: 1; }
+  .chip .emo { font-size: 1.15em; line-height: 1; display: inline-block; }
   .chip .name { overflow: hidden; text-overflow: ellipsis; }
-  .chip .del {
-    position: absolute; top: -9px; right: -9px;
-    width: 22px; height: 22px; padding: 0;
-    border-radius: 50%; border: 2px solid #fff;
-    background: #ff4d6d; color: #fff;
-    font: 700 14px/1 'Fredoka', sans-serif;
-    cursor: pointer;
-    display: none; place-items: center;
-    box-shadow: 0 2px 0 rgba(0,0,0,.2);
-  }
-  .pool .chip:hover .del, .pool .chip:focus-within .del { display: grid; }
+  .chip .emo.swap { animation: swap .5s cubic-bezier(.3,1.7,.5,1); }
+  @keyframes swap { from { transform: scale(0) rotate(-180deg); } }
   .chip.pop-in { animation: popIn .45s cubic-bezier(.3,1.7,.5,1) both; }
   @keyframes popIn {
     from { transform: rotate(var(--tilt)) scale(0); opacity: 0; }
@@ -246,101 +217,98 @@
     55%  { transform: rotate(var(--tilt)) scale(.88); }
     100% { transform: rotate(var(--tilt)) scale(1); }
   }
-  .chip.pop-out { animation: popOut .3s ease-in forwards; }
-  @keyframes popOut { to { transform: rotate(var(--tilt)) scale(0); opacity: 0; } }
 
   /* fliegende Kopie im Overlay */
   .chip.flying {
     position: fixed;
     margin: 0;
-    z-index: 1;
     pointer-events: none;
-    box-shadow: 0 12px 22px rgba(30, 0, 80, .35);
+    box-shadow: 0 .7rem 1.3rem rgba(30, 0, 80, .35);
     will-change: transform;
   }
   #flyLayer { position: fixed; inset: 0; pointer-events: none; z-index: 900; overflow: hidden; }
-  .confetti { position: fixed; top: -20px; border-radius: 3px; }
+  .confetti { position: fixed; top: -1.2rem; border-radius: 3px; }
 
-  /* ---------- Sammelzone ---------- */
+  /* ---------- Wartebank ---------- */
   .pool-wrap {
-    margin: 0 20px 16px;
-    padding: 10px 16px 12px;
+    flex: none;
+    margin: 0 1.2rem 1rem;
+    padding: .6rem 1rem .7rem;
     background: #fff;
-    border-radius: 24px;
-    border: 4px dashed #ff9ed2;
-    box-shadow: 0 8px 0 rgba(59, 29, 143, .3);
+    border-radius: 1.4rem;
+    border: .25rem dashed #ff9ed2;
+    box-shadow: 0 .5rem 0 rgba(59, 29, 143, .3);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
   }
   .pool-head {
-    display: flex; align-items: center; justify-content: space-between; gap: 10px;
-    font-family: 'Lilita One', 'Fredoka', sans-serif;
-    font-size: 20px; color: #d6336c; margin-bottom: 4px;
+    display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .4rem .8rem;
   }
-  .pool-head small { font-family: 'Fredoka', sans-serif; font-size: 14px; color: #8a7ab8; font-weight: 500; }
+  .pool-title {
+    font-family: 'Lilita One', 'Fredoka', sans-serif;
+    font-size: 1.25rem; color: #d6336c;
+  }
+  .add-form { display: flex; align-items: center; gap: .4rem; flex-wrap: wrap; }
+  .add-form input {
+    font: 500 1rem 'Fredoka', sans-serif; color: #2d1b69;
+    width: 13rem; max-width: 45vw;
+    padding: .4rem .85rem;
+    border: .15rem solid #d9ccff; border-radius: 999px;
+    background: #faf7ff; outline: none;
+  }
+  .add-form input:focus { border-color: #9775fa; background: #fff; }
+  .add-form input.shake { animation: shake .3s; border-color: #ff4d6d; }
+  @keyframes shake { 25% { transform: translateX(-.4rem); } 75% { transform: translateX(.4rem); } }
+  .btn-small { font-size: .9rem; padding: .4rem .9rem; box-shadow: 0 .22rem 0 #cfc2ff; background: #f1ecff; }
+  .btn-add { background: linear-gradient(135deg, #38d9a9, #20c997); color: #fff; box-shadow: 0 .22rem 0 #0f8a66; }
+
+  /* Löschen-Knopf an Kärtchen auf der Wartebank */
+  .chip .del {
+    position: absolute; top: -.55em; right: -.55em;
+    width: 1.4em; height: 1.4em; padding: 0;
+    border-radius: 50%; border: .12em solid #fff;
+    background: #ff4d6d; color: #fff;
+    font: 700 .85em/1 'Fredoka', sans-serif;
+    cursor: pointer;
+    display: none; place-items: center;
+    box-shadow: 0 .12em 0 rgba(0,0,0,.2);
+  }
+  .pool .chip:hover .del, .pool .chip:focus-within .del { display: grid; }
+  .chip.pop-out { animation: popOut .3s ease-in forwards; }
+  @keyframes popOut { to { transform: rotate(var(--tilt)) scale(0); opacity: 0; } }
   .pool {
+    flex: 1;
     display: flex;
     flex-wrap: wrap;
-    align-content: flex-start;
-    gap: 12px 10px;
-    min-height: 46px;
-    max-height: 24vh;
+    justify-content: center;
+    align-content: center;
+    gap: .75rem .6rem;
+    padding: .55rem .3rem .3rem;
+    min-height: 0;
     overflow: auto;
-    padding: 10px 6px 6px;
   }
-  .pool-empty { color: #8a7ab8; font-weight: 500; padding: 6px 4px; }
+  .pool-empty { color: #8a7ab8; font-weight: 500; }
   .pool-empty[hidden] { display: none; }
-
-  /* ---------- Eingabe-Fenster ---------- */
-  .modal-back {
-    position: fixed; inset: 0; z-index: 1000;
-    display: flex; align-items: center; justify-content: center;
-    padding: 16px;
-    background: rgba(35, 10, 80, .55);
-    backdrop-filter: blur(3px);
-  }
-  .modal-back[hidden] { display: none; }
-  .modal {
-    width: min(520px, 100%);
-    background: #fff;
-    border-radius: 28px;
-    padding: 22px;
-    box-shadow: 0 10px 0 #ff9ed2, 0 30px 60px rgba(0,0,0,.35);
-    animation: modalIn .4s cubic-bezier(.3,1.5,.5,1);
-  }
-  @keyframes modalIn { from { transform: scale(.7) rotate(-3deg); opacity: 0; } }
-  .modal h2 { margin: 0 0 4px; font-family: 'Lilita One', 'Fredoka', sans-serif; font-weight: 400; font-size: 28px; color: #6a3cff; }
-  .modal p { margin: 0 0 12px; color: #6b5a9e; }
-  .modal textarea {
-    width: 100%; height: 220px; resize: vertical;
-    font: 500 16px/1.5 'Fredoka', sans-serif; color: #2d1b69;
-    border: 3px solid #d9ccff; border-radius: 18px;
-    padding: 12px 14px; outline: none; background: #faf7ff;
-  }
-  .modal textarea:focus { border-color: #9775fa; background: #fff; }
-  .modal .row { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px; margin-top: 12px; }
-  .modal .row .left, .modal .row .right { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
-  .modal label.replace { display: inline-flex; gap: 6px; align-items: center; color: #6b5a9e; font-weight: 500; cursor: pointer; }
-  .modal label.replace[hidden] { display: none; }
-  .modal .btn { background: #f1ecff; box-shadow: 0 4px 0 #cfc2ff; }
-  .modal .btn-ok { background: linear-gradient(135deg, #38d9a9, #20c997); color: #fff; box-shadow: 0 4px 0 #0f8a66; }
 
   /* ---------- Toast ---------- */
   .toast {
-    position: fixed; left: 50%; top: 18px; z-index: 950;
-    transform: translate(-50%, -140%);
+    position: fixed; left: 50%; top: 50%; z-index: 950;
+    transform: translate(-50%, -50%) scale(0);
     background: #fff; color: #6a3cff;
-    font-family: 'Lilita One', 'Fredoka', sans-serif; font-size: 22px;
-    padding: 12px 24px; border-radius: 999px;
-    box-shadow: 0 6px 0 #ffd43b, 0 16px 30px rgba(0,0,0,.25);
+    font-family: 'Lilita One', 'Fredoka', sans-serif; font-size: 1.4rem;
+    padding: .7rem 1.5rem; border-radius: 999px;
+    box-shadow: 0 .35rem 0 #ffd43b, 0 1rem 1.8rem rgba(0,0,0,.25);
     transition: transform .5s cubic-bezier(.3,1.5,.5,1);
     pointer-events: none;
+    white-space: nowrap;
   }
-  .toast.show { transform: translate(-50%, 0); }
+  .toast.show { transform: translate(-50%, -50%) scale(1); }
 
-  @media (max-width: 640px) {
-    header, main { padding-left: 12px; padding-right: 12px; }
-    .pool-wrap { margin: 0 12px 12px; }
-    .tables { grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 12px; }
-    .chip { font-size: 14px; }
+  @media (max-width: 700px) {
+    html { font-size: clamp(10px, min(2.2vw, 1.8vh), 16px); }
+    header, main { padding-left: .7rem; padding-right: .7rem; }
+    .pool-wrap { margin: 0 .7rem .7rem; }
   }
 </style>
 </head>
@@ -349,71 +317,58 @@
 <header>
   <h1><span class="dice">🎲</span> Tisch-Lotterie</h1>
   <div class="controls">
-    <span class="pill" id="nameCount">👥 0 Namen</span>
-    <button class="btn" id="btnNames">✏️ Namen eingeben</button>
-    <button class="btn" id="btnBack" disabled>↩️ Alle zurück</button>
-    <button class="btn btn-go" id="btnGo" disabled>🎲 Tische auslosen!</button>
+    <span class="pill" id="nameCount">👥 0 Namen · 🪑 22 Tische</span>
+    <button class="btn" id="btnBack" disabled>↩️ Zurück auf die Wartebank</button>
+    <button class="btn btn-go" id="btnGo">🎲 Tische auslosen!</button>
   </div>
 </header>
 
 <main>
-  <section class="board" aria-label="Klassenzimmer">
+  <section class="board" id="board" aria-label="Klassenzimmer">
     <div class="tables" id="tables"></div>
   </section>
 </main>
 
-<section class="pool-wrap" aria-label="Sammelzone">
+<section class="pool-wrap" id="poolWrap" aria-label="Wartebank">
   <div class="pool-head">
-    <span>🧺 Sammelzone</span>
-    <small>Fahr mit der Maus über einen Namen, um ihn zu löschen</small>
+    <span class="pool-title">🪑 Wartebank</span>
+    <form class="add-form" id="addForm" autocomplete="off">
+      <input id="addInput" type="text" maxlength="30" placeholder="Neuer Name …" aria-label="Name eingeben">
+      <button class="btn btn-small btn-add" type="submit">➕ Hinzufügen</button>
+      <button class="btn btn-small" type="button" id="btnReset" title="Zurück zur ursprünglichen Liste (22 Namen)">🔄 Originalliste</button>
+    </form>
   </div>
   <div class="pool" id="pool">
-    <div class="pool-empty" id="poolEmpty">Noch keine Namen – klick auf „✏️ Namen eingeben“!</div>
+    <div class="pool-empty" id="poolEmpty" hidden>Alle sitzen an ihren Tischen! 🎉</div>
   </div>
 </section>
 
-<!-- Eingabe-Fenster -->
-<div class="modal-back" id="modal" hidden>
-  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-    <h2 id="modalTitle">✏️ Namen einfügen</h2>
-    <p>Ein Name pro Zeile – oder mit Komma getrennt. Einfach reinkopieren!</p>
-    <textarea id="namesInput" placeholder="Lena&#10;Max&#10;Aylin&#10;Jonas&#10;…"></textarea>
-    <div class="row">
-      <div class="left">
-        <label class="replace" id="replaceWrap"><input type="checkbox" id="replace" checked> Alte Namen ersetzen</label>
-      </div>
-      <div class="right">
-        <button class="btn" id="btnExample" type="button">🎲 Beispielnamen</button>
-        <button class="btn" id="btnCancel" type="button">Abbrechen</button>
-        <button class="btn btn-ok" id="btnAdd" type="button">✅ Übernehmen</button>
-      </div>
-    </div>
-  </div>
-</div>
-
 <div id="flyLayer"></div>
-<div class="toast" id="toast">🎉 Alle sitzen!</div>
+<div class="toast" id="toast">🎉</div>
 
 <script>
 (() => {
   'use strict';
 
+  /* ===== Feste Namensliste (aus Liste_5.4.xlsx) ===== */
+  const NAMES = [
+    'Enomaa', 'Mathilda', 'Mara', 'Sophia', 'Aliyah', 'Antonia', 'Damaris', 'Milo',
+    'Lennox', 'Bohdan', 'Paul', 'Juna', 'Jaysus', 'Fiona', 'Eileen', 'Mereanna',
+    'Cord', 'Özcan', 'Agata', 'Iven', 'Lena', 'Michel'
+  ];
+
   const TABLE_COUNT = 22;
   const COLORS = ['#FF8787', '#FFC078', '#FFE066', '#8CE99A', '#63E6BE', '#74C0FC', '#B197FC', '#F783AC', '#A9E34B', '#66D9E8', '#FFA8A8', '#E599F7'];
-  const EMOJIS = ['🦊','🐼','🐸','🦄','🐙','🐯','🐨','🐵','🦖','🐧','🐢','🦁','🐳','🦋','🐝','🐞','🦉','🐬','🐹','🐰','🦈','🐲','🦜','🐻','🍕','🚀','⚡','🌈','⭐','🍩','🎸','⚽'];
-  const SHAPES = ['999px', '16px', '18px 6px 18px 6px', '6px 18px 6px 18px', '999px 12px 999px 12px', '14px 14px 14px 4px'];
-  const EXAMPLES = ['Lena','Max','Aylin','Jonas','Mia','Elias','Emma','Noah','Sofia','Paul','Hannah','Ben','Lina','Finn','Leonie','Luca','Emilia','Mats','Zeynep','Anton','Clara','Milan'];
+  const EMOJIS = ['🦊','🐼','🐸','🦄','🐙','🐯','🐨','🐵','🦖','🐧','🐢','🦁','🐳','🦋','🐝','🐞','🦉','🐬','🐹','🐰','🦈','🐲','🦜','🐻','🦒','🦓','🐘','🦔','🦩','🐿️','🦦','🐌','🦀','🐠','🦥','🐮','🐷','🐺','🦝','🐱','🐶','🦭','🦕','🐊','🦚','🐇','🍕','🚀','⚡','🌈','⭐','🍩','🎸','⚽','🏀','🎈','🍉','🌵','🍄','🎨','🧁','🛹'];
+  const SHAPES = ['999px', '0.9em', '1em .35em 1em .35em', '.35em 1em .35em 1em', '999px .7em 999px .7em', '.8em .8em .8em .25em'];
   const REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   const $ = id => document.getElementById(id);
-  const tablesEl = $('tables'), pool = $('pool'), poolEmpty = $('poolEmpty');
+  const board = $('board'), tablesEl = $('tables'), pool = $('pool'), poolWrap = $('poolWrap'), poolEmpty = $('poolEmpty');
   const flyLayer = $('flyLayer'), toast = $('toast');
-  const btnGo = $('btnGo'), btnBack = $('btnBack'), btnNames = $('btnNames');
-  const modal = $('modal'), input = $('namesInput'), replaceBox = $('replace'), replaceWrap = $('replaceWrap');
-  const nameCount = $('nameCount');
+  const btnGo = $('btnGo'), btnBack = $('btnBack'), nameCount = $('nameCount');
 
   let busy = false;
-  let chipCounter = 0;
 
   const rand = n => Math.floor(Math.random() * n);
   const shuffle = arr => {
@@ -424,7 +379,7 @@
 
   /* ---------- Tische bauen ---------- */
   const DESK_SVG = `
-    <svg viewBox="0 0 120 64" aria-hidden="true">
+    <svg viewBox="0 0 120 64" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
       <rect x="18" y="40" width="8" height="22" rx="3" fill="#a0724f"/>
       <rect x="94" y="40" width="8" height="22" rx="3" fill="#a0724f"/>
       <rect x="6" y="8" width="108" height="38" rx="13" style="fill:var(--c)"/>
@@ -437,32 +392,28 @@
     const hue = Math.round((i - 1) * 360 / TABLE_COUNT);
     const t = document.createElement('div');
     t.className = 'table';
-    t.dataset.table = i;
     t.setAttribute('aria-label', 'Tisch ' + i);
     t.style.setProperty('--c', `hsl(${hue} 85% 64%)`);
     t.style.setProperty('--c-dark', `hsl(${hue} 65% 42%)`);
     t.style.setProperty('--c-soft', `hsl(${hue} 90% 94%)`);
-    t.innerHTML = `
-      <div class="desk">${DESK_SVG}<span class="num">${i}</span></div>
-      <span class="count">0</span>
-      <div class="seats"></div>`;
+    t.innerHTML = `<div class="desk">${DESK_SVG}<span class="num">${i}</span></div><div class="seats"></div>`;
     tablesEl.appendChild(t);
   }
   const seatsList = [...tablesEl.querySelectorAll('.seats')];
 
   /* ---------- Namenskärtchen ---------- */
-  function createChip(name) {
-    const idx = chipCounter++;
+  function createChip(name, idx) {
     const chip = document.createElement('div');
-    chip.className = 'chip';
+    chip.className = 'chip pop-in';
     chip.title = name;
+    chip.dataset.index = idx;
     chip.style.setProperty('--chip-bg', COLORS[(idx * 5) % COLORS.length]);
     chip.style.setProperty('--tilt', (Math.random() * 8 - 4).toFixed(1) + 'deg');
     chip.style.borderRadius = SHAPES[rand(SHAPES.length)];
+    chip.style.animationDelay = (idx * 45) + 'ms';
 
     const emo = document.createElement('span');
     emo.className = 'emo';
-    emo.textContent = EMOJIS[rand(EMOJIS.length)];
     const nm = document.createElement('span');
     nm.className = 'name';
     nm.textContent = name;
@@ -470,85 +421,110 @@
     del.className = 'del';
     del.type = 'button';
     del.textContent = '×';
+    del.title = name + ' entfernen';
     del.setAttribute('aria-label', name + ' entfernen');
-    del.addEventListener('click', () => {
-      if (busy) return;
-      chip.classList.add('pop-out');
-      chip.addEventListener('animationend', () => { chip.remove(); updateUI(); }, { once: true });
-    });
-
+    del.addEventListener('click', () => removeChip(chip));
     chip.append(emo, nm, del);
+
     chip.addEventListener('animationend', e => {
-      if (e.animationName === 'popIn' || e.animationName === 'land') chip.classList.remove('pop-in', 'landed');
+      if (e.target !== chip) return;
+      chip.classList.remove('pop-in', 'landed');
+      chip.style.animationDelay = '';
     });
     return chip;
   }
 
-  function addNames(names, replace) {
-    if (replace) document.querySelectorAll('.chip:not(.flying)').forEach(c => c.remove());
-    // Doppelte Namen herausfiltern (Groß-/Kleinschreibung egal)
-    const known = new Set(realChips().map(c => c.title.toLowerCase()));
-    const fresh = names.filter(n => {
-      const key = n.toLowerCase();
-      if (known.has(key)) return false;
-      known.add(key);
-      return true;
-    });
-    const skipped = names.length - fresh.length;
-    if (skipped > 0) showToast(`✋ ${skipped} doppelte${skipped === 1 ? 'r Name' : ' Namen'} übersprungen`);
-    names = fresh;
-    names.forEach((n, i) => {
-      const chip = createChip(n);
-      chip.classList.add('pop-in');
-      chip.style.animationDelay = Math.min(i * 40, 1200) + 'ms';
-      pool.appendChild(chip);
-      setTimeout(() => { chip.style.animationDelay = ''; }, Math.min(i * 40, 1200) + 600);
-    });
-    updateUI();
-  }
+  const allChips = () => [...document.querySelectorAll('.chip:not(.flying)')];
 
-  function parseNames(text) {
-    return text.split(/[\n,;\t]+/)
-      .map(s => s.replace(/\s+/g, ' ').trim())
-      .filter(Boolean)
-      .map(s => s.slice(0, 30));
+  /* Jeder Name bekommt ein eigenes, zufälliges Icon (keine Doppelten) */
+  function assignIcons(animate) {
+    const pick = shuffle(EMOJIS);
+    allChips().forEach((chip, i) => {
+      const emo = chip.querySelector('.emo');
+      emo.textContent = pick[i % pick.length];
+      if (animate) {
+        emo.classList.remove('swap');
+        void emo.offsetWidth;
+        emo.classList.add('swap');
+      }
+    });
   }
 
   /* ---------- UI-Zustand ---------- */
-  function realChips() { return [...document.querySelectorAll('.chip:not(.flying)')]; }
-
   function updateTable(seats) {
-    const table = seats.closest('.table');
     const n = seats.querySelectorAll('.chip:not([data-flying])').length;
-    table.querySelector('.count').textContent = n;
-    table.classList.toggle('has-guests', n > 0);
+    seats.closest('.table').classList.toggle('has-guests', n > 0);
   }
 
   function updateUI() {
-    const all = realChips().length;
+    const all = allChips().length;
     const inPool = pool.querySelectorAll('.chip').length;
     nameCount.textContent = `👥 ${all} ${all === 1 ? 'Name' : 'Namen'} · 🪑 ${TABLE_COUNT} Tische`;
-    nameCount.style.background = all > TABLE_COUNT ? 'rgba(255, 77, 109, .6)' : '';
-    nameCount.title = all > TABLE_COUNT ? `Mehr Namen als Tische – ${all - TABLE_COUNT} bleiben beim Auslosen in der Sammelzone` : '';
+    nameCount.style.background = all > TABLE_COUNT ? 'rgba(255, 77, 109, .65)' : '';
+    nameCount.title = all > TABLE_COUNT ? `Mehr Namen als Tische – ${all - TABLE_COUNT} bleiben beim Auslosen auf der Wartebank` : '';
+    btnReset.disabled = busy;
     poolEmpty.hidden = inPool > 0;
-    poolEmpty.textContent = all === 0
-      ? 'Noch keine Namen – klick auf „✏️ Namen eingeben“!'
-      : 'Alle Namen sitzen an ihren Tischen! 🎉';
     btnGo.disabled = busy || all === 0;
     btnBack.disabled = busy || inPool === all;
-    btnNames.disabled = busy;
-    btnGo.textContent = (all > 0 && inPool < all) ? '🎲 Nochmal auslosen!' : '🎲 Tische auslosen!';
+    btnGo.textContent = inPool < all ? '🎲 Nochmal auslosen!' : '🎲 Tische auslosen!';
     seatsList.forEach(updateTable);
   }
+
+  /* ---------- Anpassung an den Monitor ---------- */
+  let poolHeightRem = null;
+
+  function fit() {
+    const rem = parseFloat(getComputedStyle(document.documentElement).fontSize);
+
+    // Wartebank-Höhe festhalten, damit sich das Klassenzimmer während der Animation nicht verschiebt
+    const inPool = pool.querySelectorAll('.chip').length;
+    if (inPool === allChips().length || poolHeightRem === null) {
+      poolWrap.style.height = '';
+      poolHeightRem = poolWrap.offsetHeight / rem;
+    }
+    poolWrap.style.height = (poolHeightRem * rem) + 'px';
+
+    // beste Spaltenzahl für die verfügbare Fläche suchen
+    const cs = getComputedStyle(board);
+    const W = board.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight);
+    const H = board.clientHeight - parseFloat(cs.paddingTop) - parseFloat(cs.paddingBottom);
+    const gap = Math.max(6, Math.min(W, H) * 0.022);
+    const IDEAL = 1.3; // Breite : Höhe eines Tisches
+    let best = null;
+    for (let cols = 2; cols <= TABLE_COUNT; cols++) {
+      const rows = Math.ceil(TABLE_COUNT / cols);
+      let w = (W - gap * (cols - 1)) / cols;
+      let h = (H - gap * (rows - 1)) / rows;
+      if (w <= 0 || h <= 0) continue;
+      // Seitenverhältnis begrenzen, damit Tische nicht zu lang oder zu schmal werden
+      w = Math.min(w, h * 1.8);
+      h = Math.min(h, w / 0.9);
+      const score = Math.min(w / IDEAL, h) * Math.min(w, h * IDEAL);
+      if (!best || score > best.score) best = { score, w: Math.floor(w), h: Math.floor(h) };
+    }
+    if (best) {
+      tablesEl.style.setProperty('--tw', best.w + 'px');
+      tablesEl.style.setProperty('--th', best.h + 'px');
+      tablesEl.style.setProperty('--gap', gap + 'px');
+    }
+  }
+
+  let resizeTimer;
+  function scheduleFit() {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => { if (busy) scheduleFit(); else fit(); }, 120);
+  }
+  window.addEventListener('resize', scheduleFit);
 
   /* ---------- Flug-Animation (FLIP + Bogenflug) ---------- */
   const easeInOut = t => t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
 
   function buildFlightFrames(dx, dy, tilt, scaleEnd) {
     const dist = Math.hypot(dx, dy);
-    const lift = Math.min(240, 70 + dist * 0.35);          // wie hoch der Bogen ist
-    const side = (Math.random() - 0.5) * dist * 0.35;      // etwas Seitendrall
-    const cx = dx / 2 + side, cy = dy / 2 - lift;          // Kontrollpunkt der Bézier-Kurve
+    const vmin = Math.min(innerWidth, innerHeight);
+    const lift = Math.min(vmin * 0.28, vmin * 0.07 + dist * 0.35);  // Bogenhöhe
+    const side = (Math.random() - 0.5) * dist * 0.35;                  // Seitendrall
+    const cx = dx / 2 + side, cy = dy / 2 - lift;                      // Bézier-Kontrollpunkt
     const spin = (Math.random() < 0.5 ? -1 : 1) * 360;
     const frames = [];
     const N = 48;
@@ -568,22 +544,23 @@
     if (!moves.length) return;
     busy = true;
 
-    // FIRST: Startpositionen messen (Mittelpunkt + ungedrehte Größe)
+    // FIRST: Startpositionen (Mittelpunkt + ungedrehte Größe)
     const firsts = moves.map(({ chip }) => {
       const r = chip.getBoundingClientRect();
-      return { x: r.left + r.width / 2, y: r.top + r.height / 2, w: chip.offsetWidth, h: chip.offsetHeight };
+      return { x: r.left + r.width / 2, y: r.top + r.height / 2, w: chip.offsetWidth, h: chip.offsetHeight, fontSize: getComputedStyle(chip).fontSize };
     });
 
-    // Kärtchen im DOM an ihr Ziel verschieben (unsichtbar, bis die Kopie gelandet ist)
+    // Kärtchen im DOM ans Ziel setzen (unsichtbar, bis die Kopie gelandet ist)
     moves.forEach(({ chip, target }) => {
-      chip.classList.remove('pop-in', 'landed', 'pop-out');
+      chip.classList.remove('pop-in', 'landed');
+      chip.style.animationDelay = '';
       chip.dataset.flying = '1';
       chip.style.visibility = 'hidden';
       target.appendChild(chip);
     });
     updateUI();
 
-    // LAST: Zielpositionen messen
+    // LAST: Zielpositionen
     const lasts = moves.map(({ chip }) => {
       const r = chip.getBoundingClientRect();
       return { x: r.left + r.width / 2, y: r.top + r.height / 2, w: chip.offsetWidth };
@@ -594,7 +571,7 @@
     const stagger = REDUCED ? 0 : Math.min(170, 3200 / n);
     let landed = 0;
 
-    // INVERT + PLAY: fliegende Kopie im Overlay von "first" nach "last"
+    // INVERT + PLAY: fliegende Kopie im Overlay
     moves.forEach(({ chip, target }, i) => {
       const f = firsts[i], l = lasts[i];
       const tilt = parseFloat(chip.style.getPropertyValue('--tilt')) || 0;
@@ -602,8 +579,10 @@
       clone.querySelector('.del')?.remove();
       clone.classList.add('flying');
       clone.removeAttribute('data-flying');
+      clone.querySelector('.emo').classList.remove('swap');
       Object.assign(clone.style, {
         visibility: 'visible',
+        fontSize: f.fontSize,
         left: (f.x - f.w / 2) + 'px',
         top: (f.y - f.h / 2) + 'px',
         width: f.w + 'px',
@@ -638,33 +617,36 @@
   /* ---------- Auslosen & Zurück ---------- */
   function draw() {
     if (busy) return;
-    const chips = shuffle(realChips());
-    if (!chips.length) return;
-    // Keine Dopplungen: jeder Tisch wird höchstens einmal vergeben
+    assignIcons(false);                                   // neue Icons bei jeder Auslosung
+    const chips = shuffle(allChips());
     const order = shuffle([...Array(TABLE_COUNT).keys()]);
-    const seated = chips.slice(0, TABLE_COUNT);
-    const rest = chips.slice(TABLE_COUNT); // nur falls mehr Namen als Tische
+    const seated = chips.slice(0, TABLE_COUNT);           // jeder Tisch höchstens einmal
+    const rest = chips.slice(TABLE_COUNT);
     const moves = seated.map((chip, i) => ({ chip, target: seatsList[order[i]] }))
       .concat(rest.filter(c => c.parentElement !== pool).map(chip => ({ chip, target: pool })));
     const message = rest.length
-      ? `🎉 22 Tische vergeben – ${rest.length} ${rest.length === 1 ? 'Name bleibt' : 'Namen bleiben'} übrig`
+      ? `🎉 22 Tische vergeben – ${rest.length} ${rest.length === 1 ? 'Name bleibt' : 'Namen bleiben'} auf der Wartebank`
       : '🎉 Alle Tische sind ausgelost!';
     fly(moves, { celebrate: true, message });
   }
 
   function backToPool() {
     if (busy) return;
-    const chips = realChips().filter(c => c.parentElement !== pool);
+    const chips = allChips()
+      .filter(c => c.parentElement !== pool)
+      .sort((a, b) => a.dataset.index - b.dataset.index);
+    // Reihenfolge auf der Wartebank wie in der Liste
     fly(chips.map(chip => ({ chip, target: pool })));
   }
 
   /* ---------- Konfetti & Toast ---------- */
   function confetti() {
     if (REDUCED) return;
-    for (let i = 0; i < 130; i++) {
+    const vmin = Math.min(innerWidth, innerHeight);
+    for (let i = 0; i < 140; i++) {
       const p = document.createElement('div');
       p.className = 'confetti';
-      const w = 6 + Math.random() * 7;
+      const w = vmin * (0.006 + Math.random() * 0.008);
       Object.assign(p.style, {
         left: Math.random() * 100 + 'vw',
         width: w + 'px',
@@ -673,7 +655,7 @@
         borderRadius: Math.random() < .3 ? '50%' : '3px'
       });
       flyLayer.appendChild(p);
-      const dx = (Math.random() - .5) * 240;
+      const dx = (Math.random() - .5) * vmin * 0.3;
       const rot = Math.random() * 1080 - 540;
       p.animate([
         { transform: 'translate(0, 0) rotate(0deg)', opacity: 1 },
@@ -692,43 +674,97 @@
     toast.textContent = text;
     toast.classList.add('show');
     clearTimeout(toastTimer);
-    toastTimer = setTimeout(() => toast.classList.remove('show'), 2600);
+    toastTimer = setTimeout(() => toast.classList.remove('show'), 2800);
   }
 
-  /* ---------- Eingabe-Fenster ---------- */
-  function openModal() {
+  /* ---------- Namen hinzufügen / entfernen / speichern ---------- */
+  const STORE_KEY = 'tischLotterie.namen.v1';
+  const addForm = $('addForm'), addInput = $('addInput'), btnReset = $('btnReset');
+  let nextIndex = 0;
+
+  function loadNames() {
+    try {
+      const saved = JSON.parse(localStorage.getItem(STORE_KEY));
+      if (Array.isArray(saved) && saved.every(n => typeof n === 'string')) return saved;
+    } catch (e) { /* kein Speicher verfügbar – Originalliste nutzen */ }
+    return NAMES.slice();
+  }
+
+  function saveNames() {
+    const list = allChips()
+      .sort((a, b) => a.dataset.index - b.dataset.index)
+      .map(c => c.title);
+    try { localStorage.setItem(STORE_KEY, JSON.stringify(list)); } catch (e) { /* ignorieren */ }
+  }
+
+  function buildChips(names) {
+    allChips().forEach(c => c.remove());
+    nextIndex = 0;
+    names.forEach(name => pool.appendChild(createChip(name.trim(), nextIndex++)));
+    assignIcons(false);
+    updateUI();
+    fit();
+  }
+
+  function unusedEmoji() {
+    const used = new Set(allChips().map(c => c.querySelector('.emo').textContent));
+    const free = EMOJIS.filter(e => !used.has(e));
+    return (free.length ? free : EMOJIS)[rand(free.length || EMOJIS.length)];
+  }
+
+  function shakeInput() {
+    addInput.classList.remove('shake');
+    void addInput.offsetWidth;
+    addInput.classList.add('shake');
+    addInput.focus();
+  }
+
+  function addStudent(raw) {
     if (busy) return;
-    replaceWrap.hidden = realChips().length === 0;
-    modal.hidden = false;
-    setTimeout(() => input.focus(), 50);
-  }
-  function closeModal() { modal.hidden = true; }
-
-  function submitNames() {
-    const names = parseNames(input.value);
-    if (!names.length) {
-      input.animate([{ transform: 'translateX(0)' }, { transform: 'translateX(-8px)' }, { transform: 'translateX(8px)' }, { transform: 'translateX(0)' }], { duration: 300 });
-      input.focus();
+    const name = raw.replace(/\s+/g, ' ').trim().slice(0, 30);
+    if (!name) { shakeInput(); return; }
+    if (allChips().some(c => c.title.toLowerCase() === name.toLowerCase())) {
+      showToast(`✋ ${name} ist schon dabei`);
+      shakeInput();
       return;
     }
-    addNames(names, !replaceWrap.hidden && replaceBox.checked);
-    input.value = '';
-    closeModal();
+    const chip = createChip(name, nextIndex++);
+    chip.style.animationDelay = '';
+    chip.querySelector('.emo').textContent = unusedEmoji();
+    pool.appendChild(chip);
+    chip.scrollIntoView({ block: 'nearest' });
+    addInput.value = '';
+    saveNames();
+    updateUI();
+    fit();
+    if (allChips().length > TABLE_COUNT) showToast(`ℹ️ Mehr Namen als Tische – ${allChips().length - TABLE_COUNT} bleiben übrig`);
   }
 
-  btnNames.addEventListener('click', openModal);
-  $('btnCancel').addEventListener('click', closeModal);
-  $('btnAdd').addEventListener('click', submitNames);
-  $('btnExample').addEventListener('click', () => { input.value = EXAMPLES.join('\n'); input.focus(); });
-  modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
-  input.addEventListener('keydown', e => { if (e.key === 'Enter' && (e.ctrlKey || e.metaKey)) submitNames(); });
-  document.addEventListener('keydown', e => { if (e.key === 'Escape' && !modal.hidden) closeModal(); });
+  function removeChip(chip) {
+    if (busy || chip.parentElement !== pool) return;
+    chip.classList.add('pop-out');
+    chip.addEventListener('animationend', () => {
+      chip.remove();
+      saveNames();
+      updateUI();
+      fit();
+    }, { once: true });
+  }
+
+  addForm.addEventListener('submit', e => { e.preventDefault(); addStudent(addInput.value); });
+  btnReset.addEventListener('click', () => {
+    if (busy) return;
+    if (!confirm('Zur ursprünglichen Liste mit 22 Namen zurückkehren? Hinzugefügte Namen werden entfernt.')) return;
+    try { localStorage.removeItem(STORE_KEY); } catch (e) { /* ignorieren */ }
+    buildChips(NAMES);
+  });
+
+  /* ---------- Start ---------- */
+  buildChips(loadNames());                                // neue Icons bei jedem Laden
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => { if (!busy) fit(); });
 
   btnGo.addEventListener('click', draw);
   btnBack.addEventListener('click', backToPool);
-
-  updateUI();
-  openModal();
 })();
 </script>
 </body>
